@@ -1,0 +1,24 @@
+Inferring Initial Conditions in the 3-body Problem
+The 3-body problem refers to the task of predicting the motion of three mutually interacting
+particles under gravity. Each body exerts a gravitational force on every other body, and their
+positions and velocities evolve over time according to Newton’s laws of motion and universal
+gravitation. This system is non-integrable and often exhibits chaotic behavior, making precise
+long-term predictions extremely sensitive to initial conditions.
+The goal is to to infer the initial conditions– positions (x1,x2,x3), and velocities (v1,v2,v3) at t = 0
+of a gravitational N-body system, given noisy observations of the system’s state (x1(T),x2(T),x3(T),
+v1(T),v2(T),v3(T)) at a later time t = T. Instead of just using the simulated final positions and
+velocities at t = T, the trajectory at various time-steps can be used to infer the initial conditions.
+The problem can be made more challenging by varying the masses (m1,m2,m3) and inferring them
+along with position and velocity.
+Sample priors over physically reasonable positions, velocities (and masses). Simulate the trajecto
+ries of the N-body system using a high-accuracy ODE solver (e.g., RK4). Generate observations
+by adding Gaussian noise to simulate observational uncertainty (i.e., final positions of N bodies
++ observational noise). Use that data to infer the posterior distribution of the initial conditions.
+You can use synthetic data for inference as a demonstration
+
+Note: As this is a chaotic system, small fluctuations or noise in the initial conditions could lead
+to a completely different trajectory which makes getting good posterior estimates challenging.
+References:
+1. Valtonen, M., Karttunen, H. (2006) The Three-Body Problem (Cambridge University Press).
+2. https://webhomes.maths.ed.ac.uk/~douglas/cortina-v2.pdf
+3. https://blbadger.github.io/3-body-problem.html
